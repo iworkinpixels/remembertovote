@@ -1,3 +1,4 @@
+gapi_key = 'AIzaSyCzNVFliR8nnSdCeb4JbuYrLJJvf5Uk3cE';
 var stored_results = '';
 var stored_address = '';
 /**
@@ -9,19 +10,40 @@ function load() {
         stored_address = result.voting_address;
         $('#voting-address').val(stored_address);
         if (stored_address != '') {
-            lookup(stored_address, renderRepresentativeList);
+            lookup_representatives(stored_address, renderRepresentativeList);
+            lookup_voter_info(stored_address, renderVoterInfo);
         }
      }
   });
 }
 
 /**
- * Build and execute request to look up voter info for provided address.
+ * Build and execute request to look up elections info for provided 
+ * address.
  * @param {string} address Address for which to fetch voter info.
  * @param {function(Object)} callback Function which takes the
  *     response object as a parameter.
  */
- function lookup(address, callback) {
+ function lookup_voter_info(address, callback) {
+  /**
+   * Request object for given parameters.
+   * @type {gapi.client.HttpRequest}
+   */
+  var req = gapi.client.request({
+      'path' : '/civicinfo/v2/voterinfo?key='+gapi_key,
+      'params' : {'electionId' : '2000', 'address' : address}
+  });
+  req.execute(callback);
+}
+
+/**
+ * Build and execute request to look up representative info for 
+ * provided address.
+ * @param {string} address Address for which to fetch voter info.
+ * @param {function(Object)} callback Function which takes the
+ *     response object as a parameter.
+ */
+ function lookup_representatives(address, callback) {
  /**
    * Election ID for which to fetch voter info.
    * @type {number}
@@ -33,10 +55,21 @@ function load() {
    * @type {gapi.client.HttpRequest}
    */
   var req = gapi.client.request({
-      'path' : '/civicinfo/v2/representatives?key=AIzaSyCzNVFliR8nnSdCeb4JbuYrLJJvf5Uk3cE',
+      'path' : '/civicinfo/v2/representatives?key='+gapi_key,
       'params' : {'electionId' : electionId, 'address' : address}
   });
- req.execute(callback);
+  req.execute(callback);
+}
+
+/**
+ * Render Voter Info.
+ * @param {Object} response Response object returned by the API.
+ * @param {Object} rawResponse Raw response from the API.
+ */
+function renderVoterInfo(response, rawResponse) {
+    var el = $('#voting-info');
+    el.append($('<p>Please check the console for voter info. TODO: display the voter info here.</p>'));
+    console.log(response);
 }
 
 /**
@@ -216,7 +249,9 @@ document.addEventListener('click', function (event) {
         if (value != '') {
             chrome.storage.sync.set({'voting_address':value},function(){
                 stored_address = value;
-                lookup(stored_address, renderRepresentativeList);
+                lookup_representatives(stored_address, renderRepresentativeList);
+                lookup_voter_info(stored_address, renderVoterInfo);
+                show_page('#voter-info');
             });
         }
     }
