@@ -1,0 +1,137 @@
+html,body {
+    width: 600px;
+    height: 340px;
+    margin: 0;
+    padding: 0;
+}
+body {
+  font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+  font-size: 100%;
+}
+#main-container {
+  position: relative;
+  width: 600px; 
+  height: 340px;
+  box-sizing: border-box;
+  border: solid black 5px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+#main-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    list-style: none inside none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 40px;
+    width: 100%;
+    background-color: blue;
+    overflow: hidden;
+}
+#main-nav li {
+    display: inline-block;
+    height: 100%;
+}
+#main-nav li a {
+    display: block;
+    height: 40px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    padding: 8px 10px;
+    color: #fff;
+    background-color: blue;
+}
+#main-page, #voting-info, #representative-list, #representative-info,#settings {
+  position: absolute;
+  display: none;
+  left: 0;
+  top: 40px;
+  padding: 10px;
+  width: 570px;
+  height: 270px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-weight: bold;
+}
+#main-page {
+  color: #000;
+  background-color: #d7d7d7;
+}
+#voting-info {
+  color: #000;
+  background-color: #d7d7d7;
+}
+#main-page h1, #voting-info h1 {
+    text-align: center;
+}
+#main-page p, #voting-info p { 
+    text-align: justify;
+}
+#settings {
+    text-align: center;
+}
+#settings p {
+}
+#representative-list {
+  display: none;
+  /*
+  color: #fff;
+  text-shadow: 3px 3px 3px #000;
+  background: url('flag_bg.jpg') center top transparent;
+  */
+}
+#representative-list .official-container {
+  width: 100%;
+  height: 96px;
+  margin: 5px 0;
+}
+#representative-list .official-container .img-container {
+  display: block;
+  float: left;
+  width: 80px;
+  height: 90px;
+  overflow: hidden;
+  margin-right: 10px;
+}
+#representative-list .official-container .img-container img {
+  width: 100%;
+  height: auto;
+}
+#representative-list .official-container .republican {
+  border: solid red 3px;
+}
+#representative-list .official-contianer .democrat {
+  border: solid blue 3px;
+}
+#representative-list .official-container .unknown-party {
+  border: solid black 3px;
+}
+#representative-list a {
+}
+#representative-list .division-header {
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    padding: 10px 0;
+}
+#representative-info .official-container {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#representative-info .img-container {
+  display: block;
+  float: left;
+  width: 80px;
+  height: 100%;
+  overflow-x: hidden;
+  margin-right: 10px;
+}
+#representative-info .img-container img {
+  width: 100%;
+  height: auto;
+}
+

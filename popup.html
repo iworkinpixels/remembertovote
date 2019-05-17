@@ -1,0 +1,55 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <title>Remember to Vote!</title>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+    <link rel="stylesheet" type="text/css" href="popup.css"/>
+    <script src="https://apis.google.com/js/client.js"></script>
+  </head>
+  <body>
+    <div id="main-container">
+        <ul id="main-nav">
+            <li><a class="main-page-link" href="#voting-info">Main Page</a></li>
+            <li><a class="voting-info-link" href="#voting-info">Voting Info</a></li>
+            <li><a class="replist-link" href="#representative-list">Representative List</a></li>
+            <li><a class="settings-link" href="#settings">settings</a></li>
+        </ul>
+        <!-- MAIN PAGE: Explains all this. -->
+        <div id="main-page">
+            <h1>Remember to vote!</h1>
+            <p> This is a paragraph to explain the plugin to you. Welcome, please go input your address on the settings page, and then we can provide you with election info!</p>
+        </div>
+        <!-- VOTING INFO: Shows you your voting place, and what elections are coming up. Options to give yourself reminders of when it's time to go vote. -->
+        <div id="voting-info">
+            <h1>Voting Info</h1>
+            <p>This is the voting info page. Once you input your address it should fill out with information on where your polling place is, when the next elections are, deadlines for party registration if you live in a closed primary state, etc. Everything the Google Civics API can give us.</p>
+        </div>
+        <!-- REPRESENTATIVE LIST: Shows you all of your representatives at a glance and links to their info cards. -->
+        <div id="representative-list"></div>
+        <!-- REPRESENTATIVE INF0: Shows you the full info for a selected representative. -->
+        <div id="representative-info"></div>
+        <!-- ALARM: This pops up to bug you before registration deadlines or election days. -->
+        <div id="alarm"></div>
+        <!-- SETTINGS: This pops up to input your address for the civics API to use. -->
+        <div id="settings">
+	    <p>We need your voting address in order to let you know who your representatives are. Please enter it below and hit the submit button.</p>
+	    <input type="text" id="voting-address"/>
+	    <input type="submit" id="save-user-info" value="Save"/>
+	</div>
+    </div>
+    <script src="jquery.min.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
+
