@@ -44,7 +44,7 @@ body {
     color: #fff;
     background-color: blue;
 }
-#main-page, #voting-info, #representative-list, #representative-info,#settings {
+#main-page, #voter-info, #representative-list, #representative-info,#settings {
   position: absolute;
   display: none;
   left: 0;
@@ -60,14 +60,14 @@ body {
   color: #000;
   background-color: #d7d7d7;
 }
-#voting-info {
+#voter-info {
   color: #000;
   background-color: #d7d7d7;
 }
-#main-page h1, #voting-info h1 {
+#main-page h1, #voter-info h1 {
     text-align: center;
 }
-#main-page p, #voting-info p { 
+#main-page p, #voter-info p { 
     text-align: justify;
 }
 #settings {

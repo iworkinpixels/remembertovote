@@ -67,7 +67,7 @@ function load() {
  * @param {Object} rawResponse Raw response from the API.
  */
 function renderVoterInfo(response, rawResponse) {
-    var el = $('#voting-info');
+    var el = $('#voter-info');
     el.append($('<p>Please check the console for voter info. TODO: display the voter info here.</p>'));
     console.log(response);
 }
@@ -233,7 +233,7 @@ function show_page(page) {
     // Hide everything
     $('#main-page').hide();
     $('#settings').hide();
-    $('#voting-info').hide();
+    $('#voter-info').hide();
     $('#representative-list').hide();
     $('#representative-info').hide();
     $('#alarm').hide();
@@ -269,8 +269,8 @@ document.addEventListener('click', function (event) {
         show_page('#main-page');
     }
     
-    if (event.target.matches('.voting-info-link')) {
-        show_page('#voting-info');
+    if (event.target.matches('.voter-info-link')) {
+        show_page('#voter-info');
     }
     
     if (event.target.matches('.settings-link')) {
