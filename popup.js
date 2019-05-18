@@ -68,8 +68,12 @@ function load() {
  */
 function renderVoterInfo(response, rawResponse) {
     var el = $('#voter-info');
-    el.append($('<p>Please check the console for voter info. TODO: display the voter info here.</p>'));
-    console.log(response);
+    el.empty();
+    if (response.pollingLocations && response.pollingLocations.length > 0) {
+	pl = response.pollingLocations[0];
+	pl_addr = pl.address;
+	el.append($('<p>Your polling location is '+pl_addr.locationName+' '+pl_addr.line1+' '+pl_addr.city+', '+pl_addr.state+' '+pl_addr.zip+'.</p>'));
+    }
 }
 
 /**
